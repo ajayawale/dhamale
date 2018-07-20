@@ -48,8 +48,19 @@ class InstallmentController extends Controller {
 		$data = [];
 		$n = $this->changeKeys($this->pre, $r->all());
 		$ins = Installment::where('install_student', $n['install_student'])->get();
-		// dd($n);
+		//dd($n);
+		$n['install_created_at']=date('d-m-Y');
+		//dd($n);
+		if ($n['install_pdc_date']) {
+			$install_pdc_date=$n['install_pdc_date'];
+
+		}
+		if ($n['install_due_date']) {
+			$install_due_date=$n['install_due_date'];
+
+		}
 		$count = (count($ins) + 1);
+
 		// return $n;
 		$n['install_sequence'] = $count;
 		if (Installment::create($n)) {
@@ -67,7 +78,8 @@ class InstallmentController extends Controller {
 		
 
 		$ins = Installment::where('install_student', $r->student)->get();
-		// pr($ins);die;
+		//dd($ins);die;
+		
 		return DataTables::of($ins)->make(true);
 	}
 	/**
