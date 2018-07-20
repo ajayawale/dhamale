@@ -27,7 +27,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Installment extends Eloquent {
 	protected $primaryKey = 'install_id';
 	// public $timestamps = false;
-
+	//protected $dateFormat = 'd-m-Y';
 	protected $casts = [
 		'install_amount' => 'int',
 		'install_student' => 'int',
@@ -35,7 +35,7 @@ class Installment extends Eloquent {
 	];
 
 	protected $dates = [
-		 //'install_due_date',
+		//'install_due_date',
 		// 'install_pdc_date',
 		//'install_created_at',
 	];
